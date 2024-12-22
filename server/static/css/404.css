@@ -1,0 +1,46 @@
+/* public/css/404.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.not {
+  margin-bottom: 20px;
+}
+
+.error p {
+  font-size: 24px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.error a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #82030a;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.error a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 80px;
+  color: #82030a;
+}

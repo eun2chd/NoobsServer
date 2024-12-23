@@ -21,7 +21,7 @@ app.use(
     cookie: {
       httpOnly: true,
       sameSite: "Strict",
-      secure: false, // 개발 중에는 false로 설정 (HTTPS에서만 true)
+      secure: true, // 개발 중에는 false로 설정 (HTTPS에서만 true)
       maxAge: 30 * 60 * 1000, // 세션 만료 10분
     },
   })
@@ -31,7 +31,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://127.0.0.1:5173", // 요청을 허용할 클라이언트 도메인
-    origin: "http://13.125.165.201:5173", // 요청을 허용할 클라이언트 도메인
+    origin: "https://noobskr.netlify.app/", // 요청을 허용할 클라이언트 도메인
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH"], // 허용할 HTTP 메서드
   })

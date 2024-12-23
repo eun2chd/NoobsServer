@@ -554,19 +554,19 @@ const friendUserBrUpdate = async (req, res) => {
 const userAdd = async (req, res) => {
   let { userid, tagLine } = req.body;
 
-  // 세션 ID로 Redis에서 사용자 정보 가져오기
-  console.log(req);
-  const sessionId = req.sessionID; // 세션 ID
-  const sessionData = await redis.get(`user:${sessionId}`);
+  // // 세션 ID로 Redis에서 사용자 정보 가져오기
+  // console.log(req);
+  // const sessionId = req.sessionID; // 세션 ID
+  // const sessionData = await redis.get(`user:${sessionId}`);
 
-  if (!sessionData) {
-    return res
-      .status(401)
-      .json({ message: "세션 정보가 없습니다. 다시 로그인 해주세요." });
-  }
+  // if (!sessionData) {
+  //   return res
+  //     .status(401)
+  //     .json({ message: "세션 정보가 없습니다. 다시 로그인 해주세요." });
+  // }
 
-  const noobs = JSON.parse(sessionData); // Redis에서 가져온 세션 데이터 파싱
-  console.log(noobs);
+  // const noobs = JSON.parse(sessionData); // Redis에서 가져온 세션 데이터 파싱
+  // console.log(noobs);
 
   const FRIEND_MAX = 20; // 값 수정해서 최대 추가 유저 조정가능
 
@@ -581,7 +581,7 @@ const userAdd = async (req, res) => {
   try {
     const userFriendCount = await NoobsRecentFriend.count({
       where: {
-        user_id: noobs.id,
+        user_id: req.session.user.id,
       },
     });
 
@@ -605,7 +605,7 @@ const userAdd = async (req, res) => {
       // DB에서 사용자 검색
       const userFriendData = await NoobsRecentFriend.findOne({
         where: {
-          user_id: noobs.id,
+          user_id: req.session.user.id,
           gameName: userid,
           tagLine: tagLine,
         },
@@ -640,24 +640,24 @@ const userAdd = async (req, res) => {
 // 같이한 사용자 불러오기
 const friendUserBr = async (req, res) => {
   // 세션 ID로 Redis에서 사용자 정보 가져오기
-  const sessionId = req.sessionID; // 세션 ID
-  const sessionData = await redis.get(`user:${sessionId}`);
+  // const sessionId = req.sessionID; // 세션 ID
+  // const sessionData = await redis.get(`user:${sessionId}`);
 
   console.log('recevied : 같이한 사용자 불러오기');
 
-  if (!sessionData) {
-    return res
-      .status(401)
-      .json({ message: "세션 정보가 없습니다. 다시 로그인 해주세요." });
-  }
+  // if (!sessionData) {
+  //   return res
+  //     .status(401)
+  //     .json({ message: "세션 정보가 없습니다. 다시 로그인 해주세요." });
+  // }
 
-  const noobs = JSON.parse(sessionData); // Redis에서 가져온 세션 데이터 파싱
+  // const noobs = JSON.parse(sessionData); // Redis에서 가져온 세션 데이터 파싱
 
 
   try {
     const friendUser = await NoobsRecentFriend.findAll({
       where: {
-        user_id: noobs.id,
+        user_id: req.session.user.id,
       },
     });
 
@@ -746,21 +746,21 @@ const friendUserBrDel = async (req, res) => {
   const { user_id } = req.body;
 
   // 세션 ID로 Redis에서 사용자 정보 가져오기
-  console.log(req);
-  const sessionId = req.sessionID; // 세션 ID
-  const sessionData = await redis.get(`user:${sessionId}`);
+  // console.log(req);
+  // const sessionId = req.sessionID; // 세션 ID
+  // const sessionData = await redis.get(`user:${sessionId}`);
 
-  if (!sessionData) {
-    return res
-      .status(401)
-      .json({ message: "세션 정보가 없습니다. 다시 로그인 해주세요." });
-  }
-  const noobs = JSON.parse(sessionData); // Redis에서 가져온 세션 데이터 파싱
+  // if (!sessionData) {
+  //   return res
+  //     .status(401)
+  //     .json({ message: "세션 정보가 없습니다. 다시 로그인 해주세요." });
+  // }
+  // const noobs = JSON.parse(sessionData); // Redis에서 가져온 세션 데이터 파싱
   
   try {
     const delUser = await NoobsRecentFriend.destroy({
       where: {
-        user_id: noobs.id,
+        user_id: req.session.user.id,
         id: user_id,
       },
     });

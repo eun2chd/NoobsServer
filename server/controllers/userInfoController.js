@@ -12,7 +12,6 @@ import GameRank from "../models/Game_Ranking.js";
 import MatchDetails from "../models/MatchDetails.js";
 import RankedMatch from "../models/RankedMatch.js";
 import User from "../models/User.js";
-import redis from "../redisClient.js"; // redisClient.js에서 가져오기
 import moment from "moment-timezone";
 
 // 'Asia/Seoul' 시간대로 현재 시간을 가져옴

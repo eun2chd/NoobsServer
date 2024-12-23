@@ -55,7 +55,6 @@ app.set("views", path.join(__dirname, "views")); // views 디렉토리 경로 �
 // 정적 파일 제공
 app.use("/static", express.static(path.join(__dirname, "static"))); // static 디렉토리 경로 설정
 // app.use("/", express.static(path.join(__dirname, "../client/dist"))); // 로컬 실행시 해당 코드 주석
-app.use("/", express.static(path.join(__dirname, "../client/dist")));
 
 app.use(express.urlencoded({ extended: true })); // 폼 데이터 파싱
 app.use(express.json()); // JSON 데이터 파싱

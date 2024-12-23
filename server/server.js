@@ -19,7 +19,7 @@ app.use(
     saveUninitialized: false,
     rolling: false,
     cookie: {
-      httpOnly: true,
+      httpOnly: false,
       sameSite: "Lax",
       secure: true, // 개발 중에는 false로 설정 (HTTPS에서만 true)
       maxAge: 30 * 60 * 1000, // 세션 만료 10분

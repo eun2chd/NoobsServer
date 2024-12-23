@@ -31,7 +31,7 @@ const UserModal = ({
     const updateUser = async () => {
       try {
         // 비동기 함수 내에서 await 사용
-        await apiCall("/noobs/friendUserBrUpdate", "post", data);
+        await apiCall("noobs/friendUserBrUpdate", "post", data);
         setUserModal(false); // 모달 닫기
         Swal.fire({
           icon: "success",
@@ -79,7 +79,7 @@ const UserModal = ({
       user_id: user.id,
     };
     try {
-      apiCall("/noobs/friendUserBrDel", "post", data);
+      apiCall("noobs/friendUserBrDel", "post", data);
       Swal.fire({
         icon: "success",
         text: "삭제가 완료되었습니다.",

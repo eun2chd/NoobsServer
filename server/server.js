@@ -31,7 +31,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://127.0.0.1:5173", // 요청을 허용할 클라이언트 도메인
-    origin: "http://15.165.204.99:5173", // 요청을 허용할 클라이언트 도메인
+    origin: "http://13.125.165.201:5173", // 요청을 허용할 클라이언트 도메인
     credentials: true,
     methods: ["GET", "POST", "UPDATE", "PATCH"], // 허용할 HTTP 메서드
   })

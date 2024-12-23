@@ -640,9 +640,10 @@ const userAdd = async (req, res) => {
 // 같이한 사용자 불러오기
 const friendUserBr = async (req, res) => {
   // 세션 ID로 Redis에서 사용자 정보 가져오기
-  console.log(req);
   const sessionId = req.sessionID; // 세션 ID
   const sessionData = await redis.get(`user:${sessionId}`);
+
+  console.log('recevied : 같이한 사용자 불러오기');
 
   if (!sessionData) {
     return res
@@ -730,7 +731,7 @@ const friendUserBr = async (req, res) => {
         return friend;
       })
     );
-
+    console.log('return 완료');
     return res.status(200).json({ data: updatedFriends });
   } catch (error) {
     console.error("API 요청 또는 DB 처리 중 에러 발생:", error);

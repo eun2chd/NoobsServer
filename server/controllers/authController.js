@@ -58,8 +58,8 @@ const kakaoLogin = async (req, res) => {
     const sessionId = req.sessionID; // 세션 ID
     console.log(sessionId);
 
-     // 세션 정보 Redis에 저장 (1시간 TTL)
-     await redis.set(`user:${sessionId}`, JSON.stringify(req.session.user), "EX", 300); // TTL 1시간
+    //  // 세션 정보 Redis에 저장 (1시간 TTL)
+    //  await redis.set(`user:${sessionId}`, JSON.stringify(req.session.user), "EX", 300); // TTL 1시간
 
 
     // 로그인 후, 세션을 저장하고 리다이렉트
@@ -75,16 +75,11 @@ const logout = async (req, res) => {
   try {
     const sessionId = req.sessionID;
 
-     // 세션 정보 Redis에서 삭제
-     await redis.del(`user:${sessionId}`);
-
-    req.session.destroy((err) => {
       if (err) {
         return res.status(500).send("로그아웃 처리 중 오류가 발생했습니다.");
       }
       res.clearCookie("connect.sid"); // 세션 쿠키도 지우기
-      res.redirect("http://127.0.0.1:5173");
-    });
+      res.redirect("https://noobskr.netlify.app");
   } catch (err) {
     console.error(err);
     res.status(500).send("서버 오류");

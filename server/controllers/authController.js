@@ -39,6 +39,8 @@ const kakaoLogin = async (req, res) => {
 
     const kakaoUser = userResponse.data;
 
+    console.log('카카오 유저 : ' , kakaoUser);
+
     // 사용자 정보 DB에 저장 (혹은 업데이트)
     const [user, created] = await User.findOrCreate({
       where: { nickname: kakaoUser.properties.nickname },
@@ -46,6 +48,10 @@ const kakaoLogin = async (req, res) => {
         profileImage: kakaoUser.properties.profile_image,
       },
     });
+
+
+    console.log('db 저장완료 : user 정보', user);
+
 
     // 세션에 사용자 정보 저장
     req.session.user = {
@@ -55,7 +61,9 @@ const kakaoLogin = async (req, res) => {
     };
 
     const sessionId = req.sessionID; // 세션 ID
-    console.log(sessionId);
+    console.log("세션 아이디 : ",sessionId);
+    console.log("req session", req.session);
+    console.log("세션 유저 정보 : ", user);
 
     //  // 세션 정보 Redis에 저장 (1시간 TTL)
     //  await redis.set(`user:${sessionId}`, JSON.stringify(req.session.user), "EX", 300); // TTL 1시간

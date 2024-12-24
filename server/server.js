@@ -16,7 +16,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET, // 세션 암호화 키
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     //rolling: true,
     cookie: {
       httpOnly:true,

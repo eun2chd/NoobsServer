@@ -26,6 +26,7 @@ const kakaoLogin = async (req, res) => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
+        withCredentials: true,
       }
     );
 

@@ -31,6 +31,7 @@ app.use(
 app.use(
   cors({
     // origin: "http://127.0.0.1:5173", // 요청을 허용할 클라이언트 도메인
+    origin: "https://noobskr.netlify.app/main", // 요청을 허용할 클라이언트 도메인
     origin: "https://noobskr.netlify.app/", // 요청을 허용할 클라이언트 도메인
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH"], // 허용할 HTTP 메서드

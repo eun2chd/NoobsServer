@@ -2,7 +2,7 @@ import axios from 'axios';
 import User from '../models/User.js';
 import qs from 'qs';
 import dotenv from 'dotenv'
-import redis from "../redisClient.js"; // redisClient.js에서 가져오기
+
 
 dotenv.config();
 

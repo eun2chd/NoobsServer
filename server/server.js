@@ -19,11 +19,10 @@ app.use(
     saveUninitialized: true,
     //rolling: true,
     cookie: {
-      httpOnly:true,
+      httpOnly:false,
       sameSite: 'None',
       secure: true, // 개발 중에는 false로 설정 (HTTPS에서만 true)
       maxAge: 30 * 60 * 1000, // 세션 만료 10분
-      domain: '.noobskr.netlify.app',
     },
   })
 );

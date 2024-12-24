@@ -643,6 +643,7 @@ const friendUserBr = async (req, res) => {
   // const sessionData = await redis.get(`user:${sessionId}`);
 
   console.log('recevied : 같이한 사용자 불러오기');
+  console.log(req);
 
   // if (!sessionData) {
   //   return res
@@ -659,13 +660,6 @@ const friendUserBr = async (req, res) => {
         user_id: req.session.user.id,
       },
     });
-
-    // 친구가 없을 경우
-    if (!friendUser || friendUser.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "같이한 사용자 목록이 없습니다." });
-    }
 
     // 친구 정보를 비동기적으로 처리
     const updatedFriends = await Promise.all(
